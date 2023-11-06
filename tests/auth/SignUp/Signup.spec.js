@@ -1,9 +1,9 @@
 import {faker} from '@faker-js/faker'
 import {expect, test} from "@playwright/test";
 
-test.describe('Registration popup validation for first name field', ()=> {
-    test('Should be error message when first name field is empty', async ({page}) => {
-        const firstNameValue = ''
+test.describe('Registration popup validation for name field', ()=> {
+    test('Should be error message when name field is empty', async ({page}) => {
+        const nameValue = ''
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -23,7 +23,7 @@ test.describe('Registration popup validation for first name field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -33,12 +33,12 @@ test.describe('Registration popup validation for first name field', ()=> {
         const firstNameErrorMessage = registrationPopup.locator('div.invalid-feedback')
         await expect(firstNameErrorMessage, 'Error message should visible when user has entered an empty name value')
             .toHaveText('Name required')
-        await expect(nameFieldInput, 'First name input should have red border when user has entered an empty value')
+        await expect(nameFieldInput, 'Name input should have red border when user has entered an empty value')
             .toHaveCSS('border-color', 'rgb(220, 53, 69)')
     })
 
-    test('Should be error message when first name field is invalid', async ({page}) => {
-        const firstNameValue = 'blaYT$%^&*('
+    test('Should be error message when name field is invalid', async ({page}) => {
+        const nameValue = 'blaYT$%^&*('
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -58,7 +58,7 @@ test.describe('Registration popup validation for first name field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -68,12 +68,12 @@ test.describe('Registration popup validation for first name field', ()=> {
         const firstNameErrorMessage = registrationPopup.locator('div.invalid-feedback')
         await expect(firstNameErrorMessage, 'Error message should visible when user has entered invalid value')
             .toHaveText('Name is invalid')
-        await expect(nameFieldInput, 'First name input should have red border when user has entered an invalid name')
+        await expect(nameFieldInput, 'Name input should have red border when user has entered an invalid name')
             .toHaveCSS('border-color', 'rgb(220, 53, 69)')
     })
 
-    test('Should be error message when first name field is longer than 20 characters', async ({page}) => {
-        const firstNameValue = faker.string.fromCharacters('abc', {min: 21, max: 25})
+    test('Should be error message when name field is longer than 20 characters', async ({page}) => {
+        const nameValue = faker.string.fromCharacters('abc', {min: 21, max: 25})
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -93,7 +93,7 @@ test.describe('Registration popup validation for first name field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -101,15 +101,15 @@ test.describe('Registration popup validation for first name field', ()=> {
         await expect(registerButton, 'Register button should be disabled').toBeDisabled()
 
         const lastNameErrorMessage = registrationPopup.locator('div.invalid-feedback')
-        await expect(lastNameErrorMessage, 'Error message should be visible when user has entered first name longer than 20 characters')
+        await expect(lastNameErrorMessage, 'Error message should be visible when user has entered name longer than 20 characters')
             .toHaveText('Name has to be from 2 to 20 characters long')
-        await expect(lastNameFieldInput, 'Name input should have red border when user has entered first name longer than 20 characters')
+        await expect(lastNameFieldInput, 'Name input should have red border when user has entered name longer than 20 characters')
             .toHaveCSS('border-color', 'rgb(206, 212, 218)')
     })
 
-    test('Should be error message when first name field  is less than 2 characters', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
-        const lastNameValue = faker.string.fromCharacters('abc', 1)
+    test('Should be error message when name field is less than 2 characters', async ({page}) => {
+        const nameValue = faker.string.fromCharacters('abc', 1)
+        const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
         await page.goto('/')
@@ -128,24 +128,24 @@ test.describe('Registration popup validation for first name field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
         await reenterPasswordFieldInput.fill(passwordValue)
         await expect(registerButton, 'Register button should be disabled').toBeDisabled()
 
-        const lastNameErrorMessage = registrationPopup.locator('div.invalid-feedback')
-        await expect(lastNameErrorMessage, 'Error message should be visible when user has entered last name longer than 20 characters')
-            .toHaveText('Last name has to be from 2 to 20 characters long')
-        await expect(lastNameFieldInput, 'Last name input should have red border when user has entered last name longer than 20 characters')
-            .toHaveCSS('border-color', 'rgb(220, 53, 69)')
+        const nameErrorMessage = registrationPopup.locator('div.invalid-feedback')
+        await expect(nameErrorMessage, 'Error message should be visible when user has entered name longer than 20 characters')
+            .toHaveText('Name has to be from 2 to 20 characters long')
+        await expect(lastNameFieldInput, 'Name input should have red border when user has entered name longer than 20 characters')
+            .toHaveCSS('border-color', 'rgb(206, 212, 218)')
     })
 })
 
 test.describe('Registration popup validation for last name field', ()=> {
     test('Should be error message when last name field is empty', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = ''
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -165,7 +165,7 @@ test.describe('Registration popup validation for last name field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -180,7 +180,7 @@ test.describe('Registration popup validation for last name field', ()=> {
     })
 
     test('Should be error message when last name field is invalid', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = 'Bla^&*()'
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -200,7 +200,7 @@ test.describe('Registration popup validation for last name field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -215,7 +215,7 @@ test.describe('Registration popup validation for last name field', ()=> {
     })
 
     test('Should be error message when last name field is longer than 20 characters', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.string.fromCharacters('abc', {min: 21, max: 25})
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -235,7 +235,7 @@ test.describe('Registration popup validation for last name field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -243,14 +243,14 @@ test.describe('Registration popup validation for last name field', ()=> {
         await expect(registerButton, 'Register button should be disabled').toBeDisabled()
 
         const lastNameErrorMessage = registrationPopup.locator('div.invalid-feedback')
-        await expect(lastNameErrorMessage, 'Error message should be visiblw when user has entered lastname longer than 20 characters')
+        await expect(lastNameErrorMessage, 'Error message should be visible when user has entered last name longer than 20 characters')
             .toHaveText('Last name has to be from 2 to 20 characters long')
-        await expect(lastNameFieldInput, 'Last name input should have red border when user has entered lastname longer than 20 characters')
+        await expect(lastNameFieldInput, 'Last name input should have red border when user has entered last name longer than 20 characters')
             .toHaveCSS('border-color', 'rgb(220, 53, 69)')
     })
 
     test('Should be error message when last name field is less than 2 characters', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.string.fromCharacters('abc', 1)
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -270,7 +270,7 @@ test.describe('Registration popup validation for last name field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -278,16 +278,16 @@ test.describe('Registration popup validation for last name field', ()=> {
         await expect(registerButton, 'Register button should be disabled').toBeDisabled()
 
         const lastNameErrorMessage = registrationPopup.locator('div.invalid-feedback')
-        await expect(lastNameErrorMessage, 'Error message should be visible when user has entered lastname longer than 20 characters')
+        await expect(lastNameErrorMessage, 'Error message should be visible when user has entered last name longer than 20 characters')
             .toHaveText('Last name has to be from 2 to 20 characters long')
-        await expect(lastNameFieldInput, 'Last name input should have red border when user has entered lastname longer than 20 characters')
+        await expect(lastNameFieldInput, 'Last name input should have red border when user has entered last name longer than 20 characters')
             .toHaveCSS('border-color', 'rgb(220, 53, 69)')
     })
 })
 
 test.describe('Registration popup validation for email field', ()=> {
     test('Should be error message when email field is invalid', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.string.fromCharacters('abc', {min: 2, max: 25})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -307,7 +307,7 @@ test.describe('Registration popup validation for email field', ()=> {
         const reenterInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -322,7 +322,7 @@ test.describe('Registration popup validation for email field', ()=> {
     })
 
     test('Should be error message when email field is empty', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.person.lastName()
         const emailValue = ''
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -342,7 +342,7 @@ test.describe('Registration popup validation for email field', ()=> {
         const reenterInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -359,7 +359,7 @@ test.describe('Registration popup validation for email field', ()=> {
 
 test.describe('Registration popup validation for password field', ()=> {
     test('Should be error message when password field  is empty', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = ''
@@ -379,7 +379,7 @@ test.describe('Registration popup validation for password field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -394,7 +394,7 @@ test.describe('Registration popup validation for password field', ()=> {
     })
 
     test('Should be error message when password field has only characters', async({page})=>{
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName : 'aqa'})
         const passwordValue = faker.string.fromCharacters('abc', {min: 2, max: 10})
@@ -414,7 +414,7 @@ test.describe('Registration popup validation for password field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -422,14 +422,14 @@ test.describe('Registration popup validation for password field', ()=> {
         await expect(registerButton, 'Register button should be disabled').toBeDisabled()
 
         const passwordErrorMessage = registrationPopup.locator('div.invalid-feedback')
-        await expect(passwordErrorMessage, 'Error message should be visible when user has entered password without numbers')
+        await expect(passwordErrorMessage, 'Error message should be visible when user has entered password with only characters')
             .toHaveText('Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter')
         await expect(passwordFieldInput, 'Password input should have red border when user has entered invalid password')
             .toHaveCSS('border-color', 'rgb(220, 53, 69)')
     })
 
     test('Should be error message when password field has only numeric', async({page})=>{
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName : 'aqa'})
         const passwordValue = faker.string.numeric(5)
@@ -449,7 +449,7 @@ test.describe('Registration popup validation for password field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -457,14 +457,14 @@ test.describe('Registration popup validation for password field', ()=> {
         await expect(registerButton, 'Register button should be disabled').toBeDisabled()
 
         const passwordErrorMessage = registrationPopup.locator('div.invalid-feedback')
-        await expect(passwordErrorMessage, 'Error message should be visible when user has entered password without numbers')
+        await expect(passwordErrorMessage, 'Error message should be visible when user has entered password only numeric')
             .toHaveText('Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter')
         await expect(passwordFieldInput, 'Password input should have red border when user has entered invalid password')
             .toHaveCSS('border-color', 'rgb(220, 53, 69)')
     })
 
     test('Should be error message when password field  has only capital letters', async({page})=>{
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName : 'aqa'})
         const passwordValue = faker.internet.password({length: 10, memorable: true, pattern: /[A-Z]/})
@@ -485,7 +485,7 @@ test.describe('Registration popup validation for password field', ()=> {
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -502,7 +502,7 @@ test.describe('Registration popup validation for password field', ()=> {
 
 test.describe('Registration popup validation for re-enter password field', ()=> {
     test('Should be error message when re-enter password field is empty', async ({page}) => {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName: 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -523,7 +523,7 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
@@ -578,7 +578,7 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
 
 test.describe('Successful account registration', ()=>{
     test('Successful registration', async({page})=> {
-        const firstNameValue = faker.person.firstName()
+        const nameValue = faker.person.firstName()
         const lastNameValue = faker.person.lastName()
         const emailValue = faker.internet.email({firstName : 'aqa-'})
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
@@ -598,7 +598,7 @@ test.describe('Successful account registration', ()=>{
         const reenterPasswordFieldInput = registrationPopup.locator('input#signupRepeatPassword')
         const registerButton = registrationPopup.locator('.btn-primary')
 
-        await nameFieldInput.fill(firstNameValue)
+        await nameFieldInput.fill(nameValue)
         await lastNameFieldInput.fill(lastNameValue)
         await emailFieldInput.fill(emailValue)
         await passwordFieldInput.fill(passwordValue)
