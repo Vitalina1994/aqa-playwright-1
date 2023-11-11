@@ -425,7 +425,7 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
 
         registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
-        await registrationPopup.clickNameInput()
+        await this.nameInput.click()
 
         await expect(registrationPopup.errorMessage, 'Error message should visible when user has entered an empty re-entered password value')
             .toHaveText('Re-enter password required')
@@ -445,7 +445,7 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
 
         registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
-        await registrationPopup.clickNameInput()
+        await this.nameInput.click()
 
         await expect(registrationPopup.errorMessage, 'Error message should be shown when user has password do not match')
             .toHaveText('Passwords do not match')

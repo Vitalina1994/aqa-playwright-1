@@ -15,11 +15,7 @@ export default class RegistrationPopup extends BaseComponent {
     }
 
     async createAccount({name, lastName, email, password}){
-        await this.nameInput.fill(name)
-        await this.lastNameInput.fill(lastName)
-        await this.emailInput.fill(email)
-        await this.passwordInput.fill(password)
-        await this.reenterPasswordInput.fill(password)
+        await this.fillSignupForm()
         await this.registerButton.click()
         await expect(this._page).toHaveURL('https://qauto.forstudy.space/panel/garage')
     }
@@ -33,7 +29,4 @@ export default class RegistrationPopup extends BaseComponent {
         if (switchFocus) await this.reenterPasswordInput.blur()
     }
 
-    async clickNameInput() {
-        await this.nameInput.click()
-    }
 }
