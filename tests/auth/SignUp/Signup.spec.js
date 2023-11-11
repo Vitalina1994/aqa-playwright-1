@@ -36,7 +36,7 @@ test.describe('Registration popup validation for name field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should visible when user has entered an empty name value')
@@ -57,7 +57,7 @@ test.describe('Registration popup validation for name field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should visible when user has entered invalid value')
@@ -78,7 +78,7 @@ test.describe('Registration popup validation for name field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered name longer than 20 characters')
@@ -99,7 +99,7 @@ test.describe('Registration popup validation for name field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered name longer than 20 characters')
@@ -144,7 +144,7 @@ test.describe('Registration popup validation for last name field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should visible when user has entered an empty last name value')
@@ -165,7 +165,7 @@ test.describe('Registration popup validation for last name field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should visible when user has entered invalid last name value')
@@ -186,7 +186,7 @@ test.describe('Registration popup validation for last name field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered last name longer than 20 characters')
@@ -207,7 +207,7 @@ test.describe('Registration popup validation for last name field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered last name longer than 20 characters')
@@ -252,7 +252,7 @@ test.describe('Registration popup validation for email field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered invalid email')
@@ -273,7 +273,7 @@ test.describe('Registration popup validation for email field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered an empty email field')
@@ -318,7 +318,7 @@ test.describe('Registration popup validation for password field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should visible when user has entered an empty password value')
@@ -339,7 +339,7 @@ test.describe('Registration popup validation for password field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered password with only characters')
@@ -360,7 +360,7 @@ test.describe('Registration popup validation for password field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered password only numeric')
@@ -381,7 +381,7 @@ test.describe('Registration popup validation for password field', ()=> {
             reenterPassword: passwordValue
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
 
         await expect(registrationPopup.errorMessage, 'Error message should be visible when user has entered password with capital letters')
@@ -423,7 +423,7 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
             reenterPassword: ''
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
         await registrationPopup.clickNameInput()
 
@@ -443,7 +443,7 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
             reenterPassword: 'AqaTester1994!'
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
         await registrationPopup.clickNameInput()
 
@@ -485,7 +485,7 @@ test.describe('Successful account registration', ()=> {
             password: faker.internet.password({length: 9, prefix: 'Aqa1'})
         }
 
-        registrationPopup = await welcomePage.openSignupPopup()
+        registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.createAccount(registrationUserData)
         })
 })

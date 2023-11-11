@@ -8,8 +8,8 @@ export default class WelcomePage extends BasePage {
         this.signUpButton = this._page.locator('button:text("Sign up")')
     }
 
-    async openSignupPopup(){
-        await expect(this.signUpButton, 'Registration link should be visible').toBeVisible()
+    async openRegistrationPopup(){
+        await expect(this.signUpButton, 'Registration button should be visible').toBeVisible()
         await this.signUpButton.click()
 
         return new RegistrationPopup(this._page)
