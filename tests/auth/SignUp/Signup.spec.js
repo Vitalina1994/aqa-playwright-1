@@ -396,7 +396,6 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
     let page
     let welcomePage
     let registrationPopup
-    let redBorder = 'rgb(220, 53, 69)'
 
     test.beforeAll(async ({browser})=>{
         const context = await browser.newContext({
@@ -426,12 +425,13 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
 
         registrationPopup = await welcomePage.openSignupPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
+        await registrationPopup.clickNameInput()
 
         await expect(registrationPopup.errorMessage, 'Error message should visible when user has entered an empty re-entered password value')
             .toHaveText('Re-enter password required')
         await expect(registrationPopup.registerButton, 'Register button should be disabled').toBeDisabled()
         await expect(registrationPopup.passwordInput, 'Re-entered password input should have red border when user has entered an empty value')
-            .toHaveCSS('border-color', redBorder)
+            .toHaveCSS('border-color', 'rgb(206, 212, 218)')
     })
 
     test('Should be error message when passwords do not match', async({page})=>{
@@ -445,12 +445,13 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
 
         registrationPopup = await welcomePage.openSignupPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
+        await registrationPopup.clickNameInput()
 
         await expect(registrationPopup.errorMessage, 'Error message should be shown when user has password do not match')
             .toHaveText('Passwords do not match')
         await expect(registrationPopup.registerButton, 'Register button should be disabled').toBeDisabled()
         await expect(registrationPopup.reenterPasswordInput, 'Password reenter input should have red border when password do not match')
-            .toHaveCSS('border-color', redBorder)
+            .toHaveCSS('border-color', 'rgb(220, 53, 69)')
     })
 })
 

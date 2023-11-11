@@ -32,4 +32,8 @@ export default class RegistrationPopup extends BaseComponent {
         await this.reenterPasswordInput.fill(reenterPassword)
         if (switchFocus) await this.reenterPasswordInput.blur()
     }
+
+    async clickNameInput() {
+        await this.nameInput.click()
+    }
 }
