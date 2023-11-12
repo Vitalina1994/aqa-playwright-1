@@ -14,19 +14,19 @@ export default class RegistrationPopup extends BaseComponent {
         this.errorMessage = this._container.locator('.invalid-feedback')
     }
 
-    async createAccount({name, lastName, email, password}){
-        await this.fillSignupForm()
+    async createAccount({name, lastName, email, password, reenterPassword}){
+        await this.fillSignupForm({name, lastName, email, password, reenterPassword})
         await this.registerButton.click()
         await expect(this._page).toHaveURL('https://qauto.forstudy.space/panel/garage')
     }
 
-    async fillSignupForm({name, lastName, email, password, reenterPassword, switchFocus}){
+    async fillSignupForm({name, lastName, email, password, reenterPassword}){
         await this.nameInput.fill(name)
         await this.lastNameInput.fill(lastName)
         await this.emailInput.fill(email)
         await this.passwordInput.fill(password)
         await this.reenterPasswordInput.fill(reenterPassword)
-        if (switchFocus) await this.reenterPasswordInput.blur()
+        await this.reenterPasswordInput.blur()
     }
 
 }

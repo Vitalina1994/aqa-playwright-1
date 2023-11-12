@@ -422,10 +422,8 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
             password: faker.internet.password({length: 9, prefix: 'Aqa1'}),
             reenterPassword: ''
         }
-
         registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
-        await this.nameInput.click()
 
         await expect(registrationPopup.errorMessage, 'Error message should visible when user has entered an empty re-entered password value')
             .toHaveText('Re-enter password required')
@@ -445,7 +443,6 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
 
         registrationPopup = await welcomePage.openRegistrationPopup()
         await registrationPopup.fillSignupForm(registrationUserData)
-        await this.nameInput.click()
 
         await expect(registrationPopup.errorMessage, 'Error message should be shown when user has password do not match')
             .toHaveText('Passwords do not match')
@@ -478,11 +475,14 @@ test.describe('Successful account registration', ()=> {
     })
 
     test('Successful registration', async({page})=> {
+        const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
+
         const registrationUserData = {
             name: faker.person.firstName(),
             lastName: faker.person.lastName(),
             email: faker.internet.email({firstName : 'aqa-'}),
-            password: faker.internet.password({length: 9, prefix: 'Aqa1'})
+            password: passwordValue,
+            reenterPassword: passwordValue
         }
 
         registrationPopup = await welcomePage.openRegistrationPopup()
