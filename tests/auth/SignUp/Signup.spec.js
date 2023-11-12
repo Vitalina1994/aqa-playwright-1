@@ -2,7 +2,7 @@ import {faker} from '@faker-js/faker'
 import {expect, test} from '@playwright/test'
 import WelcomePage from '../../../src/pageObjects/welcomePage/WelcomePage.js'
 
-test.describe('Registration popup validation for name field', ()=> {
+test.describe('Registration popup validation for name field @regression', ()=> {
     let page
     let welcomePage
     let registrationPopup
@@ -110,7 +110,7 @@ test.describe('Registration popup validation for name field', ()=> {
     })
 })
 
-test.describe('Registration popup validation for last name field', ()=> {
+test.describe('Registration popup validation for last name field @regression', ()=> {
     let page
     let welcomePage
     let registrationPopup
@@ -218,7 +218,7 @@ test.describe('Registration popup validation for last name field', ()=> {
     })
 })
 
-test.describe('Registration popup validation for email field', ()=> {
+test.describe('Registration popup validation for email field @regression', ()=> {
     let page
     let welcomePage
     let registrationPopup
@@ -284,7 +284,7 @@ test.describe('Registration popup validation for email field', ()=> {
     })
 })
 
-test.describe('Registration popup validation for password field', ()=> {
+test.describe('Registration popup validation for password field @regression', ()=> {
     let page
     let welcomePage
     let registrationPopup
@@ -392,7 +392,7 @@ test.describe('Registration popup validation for password field', ()=> {
     })
 })
 
-test.describe('Registration popup validation for re-enter password field', ()=> {
+test.describe('Registration popup validation for re-enter password field @smoke @regression', ()=> {
     let page
     let welcomePage
     let registrationPopup
@@ -452,7 +452,7 @@ test.describe('Registration popup validation for re-enter password field', ()=> 
     })
 })
 
-test.describe('Successful account registration', ()=> {
+test.describe('Successful account registration @smoke', ()=> {
     let page
     let welcomePage
     let registrationPopup
@@ -474,7 +474,7 @@ test.describe('Successful account registration', ()=> {
         await welcomePage.waitLoaded()
     })
 
-    test('Successful registration', async({page})=> {
+    test('Successful registration @smoke', async({page})=> {
         const passwordValue = faker.internet.password({length: 9, prefix: 'Aqa1'})
 
         const registrationUserData = {
