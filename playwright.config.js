@@ -1,6 +1,7 @@
 // @ts-check
 import {defineConfig, devices} from '@playwright/test'
 import {config as testConfig} from './config/config.js'
+import {STORAGE_STATE_USER_PATH} from './src/data/storageState.js'
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -41,6 +42,11 @@ const config = defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup']
+    },
+    {
+      name: 'setup',
+      testMatch: '**/setup/**/*.setup.js',
     },
 
     // {
