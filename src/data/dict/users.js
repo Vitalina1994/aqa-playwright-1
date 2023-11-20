@@ -2,7 +2,7 @@ export const USERS = {
     VITALINA_TEST : {
         "name": "VitalinaTest",
         "lastName": "ZubkoTest",
-        "email": "vitalina.zubko@mev.com",
-        "password": "Vitalina1994!",
+        "email": "test_bla_user@mev.com",
+        "password": "WERTYUI230)r",
     }
 }
