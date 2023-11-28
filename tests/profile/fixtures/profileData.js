@@ -1,4 +1,4 @@
-export const CUSTOM_PROFILE_RESPONSE_BODY= {
+export const TEST_PROFILE_RESPONSE_BODY= {
     "status": "ok",
     "data": {
         "userId": 1111,
