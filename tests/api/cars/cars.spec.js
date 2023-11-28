@@ -1,12 +1,12 @@
 import {expect} from '@playwright/test'
-import {VALID_BRAND_MODELS} from '../../../src/data/dict/models.js'
-import {VALID_BRANDS_RESPONSE_BODY} from '../../../src/data/dict/brands.js'
+import {BRANDS_MODELS} from '../../../src/data/dict/models.js'
+import {BRANDS_RESPONSE_BODY} from '../../../src/data/dict/brands.js'
 import {test} from '../../../src/fixtures/test.fixture.js'
 
 test.describe('API test for Cars page', ()=>{
     test('Should create a new car', async({userAPIClient})=>{
-        const brandId = VALID_BRANDS_RESPONSE_BODY.data[1].id
-        const modelId = VALID_BRAND_MODELS[brandId].data[1].id
+        const brandId = BRANDS_RESPONSE_BODY.data[1].id
+        const modelId = BRANDS_MODELS[brandId].data[1].id
 
         const requestBody = {
             "carBrandId": brandId,
@@ -48,7 +48,7 @@ test.describe('API test for Cars page', ()=>{
     })
 
     test('Should give correct response for invalid modelId', async({userAPIClient})=>{
-        const brandId = VALID_BRANDS_RESPONSE_BODY.data[3].id
+        const brandId = BRANDS_RESPONSE_BODY.data[3].id
         const modelId = 'TestModel'
         const badRequest = {
             "status": "error",
@@ -73,8 +73,8 @@ test.describe('API test for Cars page', ()=>{
     })
 
     test('Should give correct response for incorrect mileage', async({userAPIClient})=>{
-        const brandId = VALID_BRANDS_RESPONSE_BODY.data[2].id
-        const modelId = VALID_BRAND_MODELS[brandId].data[2].id
+        const brandId = BRANDS_RESPONSE_BODY.data[2].id
+        const modelId = BRANDS_MODELS[brandId].data[2].id
         const badRequest = {
             "status": "error",
             "message": "Invalid mileage type"

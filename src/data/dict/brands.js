@@ -1,4 +1,4 @@
-export const VALID_BRANDS_RESPONSE_BODY = {
+export const BRANDS_RESPONSE_BODY = {
     "status": "ok",
     "data": [
         {

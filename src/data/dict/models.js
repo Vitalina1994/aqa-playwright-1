@@ -1,4 +1,4 @@
-export const VALID_BRAND_MODELS = {
+export const BRANDS_MODELS = {
     1:  {
         "status": "ok",
         "data": [
