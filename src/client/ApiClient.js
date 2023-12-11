@@ -2,14 +2,13 @@ import AuthController from '../controllers/AuthController.js'
 import CarController from '../controllers/CarController.js'
 import {CookieJar} from 'tough-cookie'
 import {config} from '../../config/config.js'
-import UserController from є../controllers/UserController.jsє
+import UserController from '../controllers/UserController.js'
 
 export default class APIClient {
     constructor(options) {
         this.auth = new AuthController(options)
         this.users = new UserController(options)
         this.cars = new CarController(options)
-
     }
 
     static async authenticate(userData, options = { baseUrl: config.apiURL }){
