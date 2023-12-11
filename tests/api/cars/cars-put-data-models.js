@@ -1,5 +1,5 @@
 import {test} from '../../../src/fixtures/test.fixture.js'
-import {USERS} from '../../../src/data/dict/users'
+import {USERS} from '../../../src/data/dict/users.js'
 import {expect} from '@playwright/test'
 import UpdateCarModel from '../../../src/models/cars/updateCarModel.js'
 
@@ -70,7 +70,7 @@ test.describe('Negative: update cars with invalid request', ()=> {
         const updateCarModel = new UpdateCarModel({
             carBrandId: 1,
             carModelId: 1,
-            mileage: 99999999999
+            mileage: 10000000000000
         })
         const response = await client.cars.updateUserCarById(carId, updateCarModel)
         const body = response.data

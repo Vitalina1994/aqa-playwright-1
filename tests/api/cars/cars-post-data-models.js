@@ -1,6 +1,6 @@
-import {USERS} from '../../../src/data/dict/users'
+import {USERS} from '../../../src/data/dict/users.js'
 import {expect} from '@playwright/test'
-import {test} from '../../../src/fixtures/test.fixture'
+import {test} from '../../../src/fixtures/test.fixture.js'
 import CreateCarModel from '../../../src/models/cars/createCarModel.js'
 
 test.describe('Positive: cars post requests', () => {
@@ -46,7 +46,7 @@ test.describe('Negative: cars post requests', () =>{
     test('Should not create a user without a model', async()=> {
         const createCarModel = new CreateCarModel({
             carBrandId: 1,
-            carModelId: '',
+            carModelId: "",
             mileage: 0
         })
         const response = await client.cars.createNewCar(createCarModel)
