@@ -1,8 +1,6 @@
 import dotenv from 'dotenv'
 
-dotenv.config({
-    path:  process.env.ENV ? `./.env.${process.env.ENV}` : './.env'
-})
+dotenv.config()
 
 console.log("Using env : ", process.env.ENV)
 
