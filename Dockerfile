@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.40.1-jammy
+FROM mcr.microsoft.com/playwright:v1.39.0-jammy
 
 #ARG HTTP_CREDENTIALS_USERNAME
 #ARG HTTP_CREDENTIALS_PASSWORD
