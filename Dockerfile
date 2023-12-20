@@ -1,14 +1,8 @@
-FROM mcr.microsoft.com/playwright:v1.40.1-jammy
-
-ARG HTTP_CREDENTIALS_USERNAME
-ARG HTTP_CREDENTIALS_PASSWORD
-
-ENV HTTP_CREDENTIALS_USERNAME=HTTP_CREDENTIALS_USERNAME
-ENV HTTP_CREDENTIALS_PASSWORD=HTTP_CREDENTIALS_PASSWORD
+FROM mcr.microsoft.com/playwright:v1.39.0-jammy
 
 COPY . /aqa-playwright-1
 WORKDIR /aqa-playwright-1
 
 RUN npm ci
 
-CMD ["npm", "test"]
+CMD ["npm", "run", "test"]

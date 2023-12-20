@@ -1,6 +1,5 @@
-name: "Automation tests"
+name: "Automated tests"
 on: push
-
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -12,14 +11,15 @@ jobs:
           ref: ${{github.ref}}
       - name: "copy environment variables"
         run: |
-          cp '.env.example.stage' '.env'
+          cp '.env.stage' '.env'
       - name: "Run tests"
         run: |
-          HTTP_CREDENTIALS_USERNAME=${{secrets.HTTP_CREDENTIALS_USERNAME}} HTTP_CREDENTIALS_PASSWORD=${{secrets.HTTP_CREDENTIALS_PASSWORD}} docker-compose up --exit-code-from auto-tests
+          HTTP_CREDENTIALS_USERNAME=${{secrets.HTTP_CREDENTIALS_USERNAME}} 
+          HTTP_CREDENTIALS_PASSWORD=${{secrets.HTTP_CREDENTIALS_PASSWORD}}
+          docker-compose up --exit-code-from auto-tests
       - name: "Upload artifacts"
         if: failure()
-        uses: actions/checkout@v3
+        uses: actions/upload-artifact@v3
         with:
-          name: test-report
-          path: playwright-report/
-          retention-days: 5
+            name: test-report
+            path: playwright-report/
