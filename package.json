@@ -9,7 +9,6 @@
     "test:ui": "npx playwright test --ui",
     "test:smoke": "npx playwright test -c playwright.config.smoke.js",
     "test:regression": "npx playwright test -c playwright.config.regression.js",
-    "test:ci": "npx playwright test -c playwright.config.ci.js"
   },
   "keywords": [],
   "author": "",
