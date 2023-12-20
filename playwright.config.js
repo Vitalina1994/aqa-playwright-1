@@ -28,7 +28,7 @@ const config = defineConfig({
     ['list']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: false,
+    headless: true,
     httpCredentials: testConfig.httpCredentials,
     screenshot: 'only-on-failure',
     /* Base URL to use in actions like `await page.goto('/')`. */
