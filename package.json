@@ -8,7 +8,7 @@
     "report": "npx playwright show-report",
     "test:ui": "npx playwright test --ui",
     "test:smoke": "npx playwright test -c playwright.config.smoke.js",
-    "test:regression": "npx playwright test -c playwright.config.regression.js",
+    "test:regression": "npx playwright test -c playwright.config.regression.js"
   },
   "keywords": [],
   "author": "",
